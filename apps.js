@@ -12,7 +12,7 @@ if(!fs.existsSync(dataPath)){
     fs.writeFileSync(dataPath,'[]','utf-8');
 }
 
-// add
+// add (C)
 yargs.command({
     command:'add',
     describe:'add new contact', 
@@ -63,7 +63,7 @@ yargs.command({
     }
 });
 
-// detail
+// detail (R)
 yargs.command({
     command: 'detail',
     describe: 'read contact detail',
@@ -88,7 +88,7 @@ yargs.command({
     }
 });
 
-//list
+//list (R)
 yargs.command({
     command: 'list',
     describe: 'list all contacts',
@@ -104,7 +104,7 @@ yargs.command({
     }
 });
 
-// update
+// update (U)
 yargs.command({
     command: 'update',
     describe: 'Update contact by name',
@@ -148,10 +148,10 @@ yargs.command({
     }
 });
 
-// delete
+// delete (D)
 yargs.command({
     command: 'delete',
-    describe: 'Delete contact by name',
+    describe: 'Delete contact by Name',
     builder: {
         name: {
             describe: 'Contact Name',

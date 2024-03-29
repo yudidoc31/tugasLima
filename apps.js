@@ -1,4 +1,3 @@
-
 const yargs = require("yargs");
 const fs = require('fs');
 const validator = require('validator')
@@ -12,13 +11,9 @@ const dataPath = './data/contact.json';
 if(!fs.existsSync(dataPath)){
     fs.writeFileSync(dataPath,'[]','utf-8');
 }
-// ref chatGPT
-//membuat aplikasi kontak menggunakan Node.js dan modul yargs: CRUD
-// ===================================================================//
 
-// add (C)
+// add
 yargs.command({
-    // command: 'add', perintah yang digunakan untuk menjalankan fungsi yang didefinisikan di dalam handler adalah add
     command:'add',
     describe:'add new contact', 
     builder:{
@@ -68,10 +63,10 @@ yargs.command({
     }
 });
 
-// detail (R)
+// detail
 yargs.command({
     command: 'detail',
-    describe: 'detail contact',
+    describe: 'read contact detail',
     builder: {
         name: {
             describe: 'name of the contact',
@@ -93,7 +88,7 @@ yargs.command({
     }
 });
 
-//list ("R")
+//list
 yargs.command({
     command: 'list',
     describe: 'list all contacts',
@@ -103,13 +98,13 @@ yargs.command({
         const contacts = JSON.parse(file);
 
         console.log('List of contacts:');
-        contacts.forEach(contact => {
-            console.log(`Name: ${contact.name}, Mobile: ${contact.mobile}, Email: ${contact.email || 'Not provided'}`);
+        contacts.forEach((contact, index) => {
+            console.log(`${index + 1}. Name: ${contact.name}, Mobile: ${contact.mobile}, Email: ${contact.email || 'Not provided'}`);
         });
     }
 });
 
-// update (U)
+// update
 yargs.command({
     command: 'update',
     describe: 'Update contact by name',
@@ -153,7 +148,7 @@ yargs.command({
     }
 });
 
-// delete (D)
+// delete
 yargs.command({
     command: 'delete',
     describe: 'Delete contact by name',
@@ -180,10 +175,3 @@ yargs.command({
     }
 });
 yargs.parse();
-
-// modul fs untuk membaca dan menulis ke file.
-// modul yargs untuk menangani argumen dari baris perintah.
-// penambahkan dua perintah: add untuk menambahkan kontak baru dan list untuk menampilkan daftar kontak.
-// penambahan kontak baru ke dalam file dan untuk menampilkan daftar kontak dari file.
-// Kode di bawah yargs.parse() digunakan untuk memulai proses parsing argumen dari baris perintah.
-// Pastikan untuk membuat direktori data dan file contacts.json di dalamnya sebelum menjalankan 
